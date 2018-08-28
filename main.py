@@ -1,15 +1,13 @@
 # Python Module
-import os
 from datetime import date
 
 # Inner Function
 from libs.settings import encryptFolder, decryptFolder
+from libs.sysCommand import clear
 from libs.encryption import encrypteMessage
 from libs.decryption import decrypteMessage
 from libs.valideKey import valideKey, changeKey
 from libs.changeAlphabet import changeAlphabet
-
-clear = lambda: os.system('cls')
 
 def main():
 	clear()
@@ -71,7 +69,7 @@ def main():
 
 					print('\nDone.\nYour decrypted message is now in ' + decryptFolder + ' directory.\n')
 				except:
-					print("Sorry. Can't read your file. Please import another one")
+					print("Sorry. Can't read your file. Please import another one." + str(e))
 			else:
 				currentMessage_new = decrypteMessage(currentMessage)
 				print('\nYour original message is now: ' + currentMessage_new)

@@ -4,12 +4,13 @@
 __Implemented__
 - Create valide key
 - Create alphabet
-- Affine - Encryption/Decryption
+- Cipher encapsulation:
+	- Affine - Encryption/Decryption (niv 1)
+	- Vigener- Encryption/Decryption (niv 2)
 - Generate file of your Encrypt or Decrypt file
 
 __Will be Implement__
 - Graphic interface
-- Vigener- Encryption/Decryption
 - Send email of your Encrypt or Decrypt file
 - Share alphabet and key
 - etc.

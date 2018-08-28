@@ -1,5 +1,5 @@
 from libs.verification import alphaLen, myKeys, verify, alphaContent
-from libs.mathFunction import bezuteCode
+from libs.mathFunction import bezuteCode, setKeyWordMessage
 
 ############################################
 # Affine
@@ -27,12 +27,31 @@ def decrypteAffineMessage(message):
 		newMessage = newMessage + decrypteAffineLetter(letter)
 	return newMessage
 
+############################################
+# Vigener
+
+def decryptVigenerLetter(letter1, letter2):
+	try:
+		return alphaContent[(alphaContent.index(letter1) - alphaContent.index(letter2))%alphaLen]
+	except:
+		return letter1
+
+def decryptVigenerWord(message):
+	newMessage = ''
+	i = 0
+	KeyWordMessage = setKeyWordMessage(message, myKeys[2])
+	while i < len(message):
+		newMessage = newMessage + decryptVigenerLetter(message[i], KeyWordMessage[i])
+		i = i + 1
+	return(newMessage)
+
 ##############################
 # Encryprion level control
 def decrypteMessage(message):
 	newMessage = ""
 	if verify:
-		newMessage = decrypteAffineMessage(message)
+		newMessage = decryptVigenerWord(message)
+		newMessage = decrypteAffineMessage(newMessage)
 		return newMessage
 	else:
 		return "Sorry your message can't be encrypted"

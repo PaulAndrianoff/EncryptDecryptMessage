@@ -8,8 +8,9 @@ def setNewKey():
 		try:
 			aKey = int(input("\nIn (ax + b)mod m, a = "))
 			bkey = int(input("\nand b = "))
+			wordKey = input("\nYour key word or phrase = ")
 
-			keysFile.write(str(aKey) + "\n" + str(bkey))
+			keysFile.write(str(aKey) + "\n" + str(bkey) + "\n" + wordKey)
 			keysFile.close()
 			break;
 		except Exception as e:
@@ -38,7 +39,7 @@ def restoreDefaultKey():
 	print('You have restore your default key has a=' + defaultKeysFile[0] + ' - b=' + defaultKeysFile[1])
 
 def changeKey():
-	print('\nYour current keys are a=' + str(myKeys[0]) + ' - b=' + str(myKeys[1]))
+	print('\nYour current keys are a=' + str(myKeys[0]) + ' - b=' + str(myKeys[1]) + ' - keyWord=' + myKeys[2])
 	while True:
 		choice = input('''
 1°) Change your keys

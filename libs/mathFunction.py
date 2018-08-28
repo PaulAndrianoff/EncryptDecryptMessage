@@ -28,3 +28,10 @@ def bezuteCode(key, alphaLen):
 		return u
 	except Exception as e:
 		return e
+
+def setKeyWordMessage(message, keyWord):
+	keyWordMessage = ''
+	while len(message) > len(keyWordMessage):
+		keyWordMessage = keyWordMessage + keyWord
+
+	return keyWordMessage[0:len(message)]	
