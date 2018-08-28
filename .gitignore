@@ -1,0 +1,11 @@
+# Don't track content of these folders
+__pycache__/
+*/__pycache__/
+decryptedFile/*
+encryptedFile/*
+settings/*
+
+# exception to the rule
+!decryptedFile/.gitkeep
+!encryptedFile/.gitkeep
+!settings/.gitkeep
