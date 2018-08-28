@@ -1,6 +1,8 @@
 # Don't track content of these folders
 __pycache__/
 */__pycache__/
+
+# Don't track content of all files in these folders
 decryptedFile/*
 encryptedFile/*
 settings/*
