@@ -3,11 +3,11 @@ __pycache__/
 */__pycache__/
 
 # Don't track content of all files in these folders
-decryptedFile/*
-encryptedFile/*
-settings/*
+decryptedFile/*.txt
+encryptedFile/*.txt
+settings/*.txt
 
 # exception to the rule
-!decryptedFile/.gitkeep
-!encryptedFile/.gitkeep
-!settings/.gitkeep
+# !decryptedFile/.gitkeep
+# !encryptedFile/.gitkeep
+# !settings/.gitkeep
