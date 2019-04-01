@@ -1,5 +1,6 @@
-from libs.settings import keysUrl, defaultKeystUrl
+from libs.settings import keysUrl, defaultKeystUrl, defaultAppHeader
 from libs.verification import myKeys, verify
+from libs.sysCommand import clear
 
 def setNewKey():
 	print('\nYour keys: a=' + str(myKeys[0]) + ' - b=' + str(myKeys[1]) + '\n')
@@ -12,7 +13,7 @@ def setNewKey():
 
 			keysFile.write(str(aKey) + "\n" + str(bkey) + "\n" + wordKey)
 			keysFile.close()
-			break;
+			break
 		except Exception as e:
 			print (str(e))
 	
@@ -41,6 +42,8 @@ def restoreDefaultKey():
 def changeKey():
 	print('\nYour current keys are a=' + str(myKeys[0]) + ' - b=' + str(myKeys[1]) + ' - keyWord=' + myKeys[2])
 	while True:
+		clear()
+		print(defaultAppHeader)
 		choice = input('''
 1°) Change your keys
 2°) Set your current keys as your default one

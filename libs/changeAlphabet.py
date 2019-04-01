@@ -1,5 +1,6 @@
-from libs.settings import alphabetUrl, defaultAlphabetUrl
+from libs.settings import alphabetUrl, defaultAlphabetUrl, defaultAppHeader
 from libs.verification import alphaLen, alphaContent
+from libs.sysCommand import clear
 
 def setNewAlphabet():
 	newAlphabet = input('Write all characters you want in you alphabet (Special char not yet implement):\n')
@@ -24,6 +25,8 @@ def restoreDefaultAlphabet():
 def changeAlphabet():
 	print('\n Your current alphabet is:\n' + alphaContent + '\n')
 	while True:
+		clear()
+		print(defaultAppHeader)
 		choice = input('''
 1°) Change your alphabet
 2°) Set your current alphabet as your default one

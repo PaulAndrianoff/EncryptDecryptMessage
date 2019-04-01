@@ -1,25 +1,16 @@
-# Python Module
-from datetime import date
-
 # Inner Function
-from libs.settings import encryptFolder, decryptFolder
-from libs.sysCommand import clear
+from libs.settings import encryptFolder, decryptFolder, defaultAppHeader
+from libs.sysCommand import clear, pause
 from libs.encryption import encrypteMessage
 from libs.decryption import decrypteMessage
 from libs.valideKey import valideKey, changeKey
 from libs.changeAlphabet import changeAlphabet
+from libs.fileFunction import openFile, saveFile
 
 def main():
 	clear()
-	print('''||--------------------------------------------------||
-||	  Made by Paul Andrianoff - v.1.0           ||
-||--------------------------------------------------||
-||	 Encryption and decryption affine           ||
-||__________________________________________________||
-	''')
-	currentMessage = ''
-	while True:
-		choice = input(
+	print(defaultAppHeader)
+	choice = input(
 '''
 -- Encryption and decryption affine --
 
@@ -29,58 +20,42 @@ def main():
 4°) Change your alphabet
 [else to exit] Please enter your choice: ''')
 
-		if choice == '1':
-			try:
-				tempFile = open(input('Enter file path of your message: ').replace('\\', '/').replace('"', ''), 'r').readlines()
-				myMessage = ""
+	if choice == '1':
+		try:
+			clear()
+			myMessage = openFile()
+							
+			currentMessage = encrypteMessage(myMessage)
+			saveFile(currentMessage, encryptFolder)
 
-				for line in tempFile:
-					myMessage = myMessage + line
-				
-				currentMessage = encrypteMessage(myMessage)
+			print('\nDone.\nYour encrypted message is now in ' + encryptFolder + ' directory.\n')
+		except Exception as e:
+			print("Sorry. Can't read your file. Please import another one." + str(e))
 
-				filename = input("Please, name your encrypted file: ")
-				today = date.today()
+		pause()
 
-				encryptedFile = open(encryptFolder + str(today) + "_" + filename + ".txt", 'w')
-				encryptedFile.write(currentMessage)
-				encryptedFile.close()
+	elif choice == '2':
+		try:
+			clear()
+			myMessage = openFile()
 
-				print('\nDone.\nYour encrypted message is now in ' + encryptFolder + ' directory.\n')
-			except Exception as e:
-				print("Sorry. Can't read your file. Please import another one." + str(e))
+			currentMessage = decrypteMessage(myMessage)
+			saveFile(currentMessage, decryptFolder)
+
+			print('\nDone.\nYour decrypted message is now in ' + decryptFolder + ' directory.\n')
+		except Exception as e:
+			print("Sorry. Can't read your file. Please import another one." + str(e))
+
+		pause()
+
+	elif choice == '3':
+		changeKey()
+	elif choice == '4':
+		changeAlphabet()
+	else:
+		exit()
+	main()
 		
-		elif choice == '2':
-			if currentMessage == '' or True:
-				try:
-					tempFile = open(input('Enter file path of your message: ').replace('\\', '/').replace('"', ''), 'r').readlines()
-					myMessage = ""
-
-					for line in tempFile:
-						myMessage = myMessage + line
-					currentMessage = decrypteMessage(myMessage)
-
-					filename = input("Please, name your encrypted file: ")
-					today = date.today()
-
-					decryptedFile = open(decryptFolder + str(today) + "_" + filename + ".txt", 'w')
-					decryptedFile.write(currentMessage)
-					decryptedFile.close()
-
-					print('\nDone.\nYour decrypted message is now in ' + decryptFolder + ' directory.\n')
-				except:
-					print("Sorry. Can't read your file. Please import another one." + str(e))
-			else:
-				currentMessage_new = decrypteMessage(currentMessage)
-				print('\nYour original message is now: ' + currentMessage_new)
-		elif choice == '3':
-			changeKey()
-			exit()
-		elif choice == '4':
-			changeAlphabet()
-			exit()
-		else:
-			break
 
 if __name__ == '__main__':
     main()
