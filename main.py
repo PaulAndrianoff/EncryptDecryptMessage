@@ -5,7 +5,7 @@ from libs.encryption import encrypteMessage
 from libs.decryption import decrypteMessage
 from libs.valideKey import valideKey, changeKey
 from libs.changeAlphabet import changeAlphabet
-from libs.fileFunction import openFile, saveFile
+from libs.fileFunction import openFile, saveFile, deleteAllFile
 
 def main():
 	clear()
@@ -16,8 +16,10 @@ def main():
 
 1°) Encypte a file
 2°) Decrypte a file
-3°) Change your keys
-4°) Change your alphabet
+3°) Delete all encrypted file
+4°) Delete all decrypted file
+5°) Change your keys
+6°) Change your alphabet
 [else to exit] Please enter your choice: ''')
 
 	if choice == '1':
@@ -49,8 +51,14 @@ def main():
 		pause()
 
 	elif choice == '3':
-		changeKey()
+		deleteAllFile(encryptFolder)
+		pause()
 	elif choice == '4':
+		deleteAllFile(decryptFolder)
+		pause()
+	elif choice == '5':
+		changeKey()
+	elif choice == '6':
 		changeAlphabet()
 	else:
 		exit()

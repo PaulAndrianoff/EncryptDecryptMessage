@@ -1,6 +1,8 @@
 # Python Module
 import datetime
 from tkinter import filedialog
+import glob
+import os
 
 # Inner Function
 from libs.settings import encryptFolder, decryptFolder
@@ -25,3 +27,10 @@ def saveFile(currentMessage, path):
 	encryptedFile = open(path + str(today) + "_" + filename + ".txt", 'w')
 	encryptedFile.write(currentMessage)
 	encryptedFile.close()
+
+def deleteAllFile(path):
+	# print(str(path) + "*.txt")
+	filelist=glob.glob(path + "*.txt")
+	for file in filelist:
+		os.remove(file)
+	print("All files in " + path + " are deleted")
