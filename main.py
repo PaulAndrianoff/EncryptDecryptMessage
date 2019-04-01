@@ -37,7 +37,7 @@ def main():
 	elif choice == '2':
 		try:
 			clear()
-			myMessage = openFile()
+			myMessage = openFile(encryptFolder)
 
 			currentMessage = decrypteMessage(myMessage)
 			saveFile(currentMessage, decryptFolder)

@@ -1,9 +1,11 @@
 from libs.settings import keysUrl, defaultKeystUrl, defaultAppHeader
-from libs.verification import myKeys, verify
-from libs.sysCommand import clear
+from libs.verification import myKeys, verify, getAllKey, alphaLen, getVerify
+from libs.sysCommand import clear, pause
+from libs.mathFunction import coprime
 
 def setNewKey():
-	print('\nYour keys: a=' + str(myKeys[0]) + ' - b=' + str(myKeys[1]) + '\n')
+	global verify
+	# print('\nYour keys: a=' + str(myKeys[0]) + ' - b=' + str(myKeys[1]) + '\n')
 	keysFile = open(keysUrl, 'w')
 	while True:
 		try:
@@ -19,9 +21,11 @@ def setNewKey():
 	
 
 def valideKey():
+	global verify
 	while True:
 		setNewKey()
-		if verify:
+		getAllKey()
+		if getVerify():
 			print('You set new key.')
 			break
 
@@ -40,10 +44,14 @@ def restoreDefaultKey():
 	print('You have restore your default key has a=' + defaultKeysFile[0] + ' - b=' + defaultKeysFile[1])
 
 def changeKey():
-	print('\nYour current keys are a=' + str(myKeys[0]) + ' - b=' + str(myKeys[1]) + ' - keyWord=' + myKeys[2])
 	while True:
 		clear()
 		print(defaultAppHeader)
+		try:
+			tempKey = getAllKey()
+			print('\nYour current keys are :\na=' + str(tempKey[0]) + ' - b=' + str(tempKey[1]) + '\nkeyWord=' + tempKey[2])
+		except Exception as e:
+			print("Your key are not valide please change them " + str(e))
 		choice = input('''
 1°) Change your keys
 2°) Set your current keys as your default one
@@ -58,3 +66,4 @@ def changeKey():
 			restoreDefaultKey()
 		else:
 			break
+		pause()

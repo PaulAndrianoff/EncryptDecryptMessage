@@ -1,1 +1,1 @@
-abcdefghijklmnopqrstuvwxyz{[.,/;'\]}
+ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ,.'!?123456789#[]
