@@ -1,5 +1,7 @@
 # EncryptDecryptMessage
 
+![Encryption exemple](./EncryptionExemple.png)
+
 ## In Developpement
 __Implemented__
 - Create valide key

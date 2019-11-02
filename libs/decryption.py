@@ -1,5 +1,5 @@
 from libs.verification import alphaLen, myKeys, verify, alphaContent
-from libs.mathFunction import bezuteCode, setKeyWordMessage, roundNum
+from libs.mathFunction import bezuteCode, setKeyWordMessage, roundNum, randString
 from libs.sysCommand import clear
 import time
 

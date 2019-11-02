@@ -1,7 +1,7 @@
 from libs.settings import keysUrl, defaultKeystUrl, defaultAppHeader
-from libs.verification import myKeys, verify, getAllKey, alphaLen, getVerify
+from libs.verification import myKeys, verify, getAllKey, alphaLen, getVerify, alphaContent
 from libs.sysCommand import clear, pause
-from libs.mathFunction import coprime
+from libs.mathFunction import coprime, randString
 
 def setNewKey():
 	global verify
@@ -11,7 +11,7 @@ def setNewKey():
 		try:
 			aKey = int(input("\nIn (ax + b)mod m, a = "))
 			bkey = int(input("\nand b = "))
-			wordKey = input("\nYour key word or phrase = ")
+			wordKey = randString(int(input("\nYour key lenght = ")), alphaContent)
 
 			keysFile.write(str(aKey) + "\n" + str(bkey) + "\n" + wordKey)
 			keysFile.close()
