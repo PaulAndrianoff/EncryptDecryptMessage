@@ -6,7 +6,8 @@ __Implemented__
 - Create alphabet
 - Cipher encapsulation:
 	- Affine - Encryption/Decryption (niv 1)
-	- Vigener- Encryption/Decryption (niv 2)
+	- Vigener - Encryption/Decryption (niv 2)
+	- Random Char- Encryption/Decryption (niv 3)
 - Generate file of your Encrypt or Decrypt file
 
 __Will be Implement__

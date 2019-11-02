@@ -1,3 +1,5 @@
+import random
+
 # Greater common diviser
 def gcd(a, b):
 	while b != 0:
@@ -34,4 +36,14 @@ def setKeyWordMessage(message, keyWord):
 	while len(message) > len(keyWordMessage):
 		keyWordMessage = keyWordMessage + keyWord
 
-	return keyWordMessage[0:len(message)]	
+	return keyWordMessage[0:len(message)]
+
+def roundNum(x, n):
+	return eval('"%.' + str(int(n)) + 'f" % ' + repr(x))
+
+def randString(length, alphaContent):
+    tempString = ''
+    for i in range(0, length):
+        tempString += alphaContent[random.randint(0, len(alphaContent)-1)]
+    
+    return tempString

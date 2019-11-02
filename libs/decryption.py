@@ -1,5 +1,7 @@
 from libs.verification import alphaLen, myKeys, verify, alphaContent
-from libs.mathFunction import bezuteCode, setKeyWordMessage
+from libs.mathFunction import bezuteCode, setKeyWordMessage, roundNum
+from libs.sysCommand import clear
+import time
 
 ############################################
 # Affine
@@ -23,8 +25,16 @@ def decrypteAffineLetter(letter):
 
 def decrypteAffineMessage(message):
 	newMessage = ""
+	i = 0
+	maxLen = len(message)
+	print("\n[", end='')
 	for letter in message:
+		time.sleep(0)
 		newMessage = newMessage + decrypteAffineLetter(letter)
+		if int(i/maxLen*100) % 10 == 0:
+			print("#", end='')
+		i += 1
+	print('] \n Done')
 	return newMessage
 
 ############################################
@@ -45,12 +55,28 @@ def decryptVigenerWord(message):
 		i = i + 1
 	return(newMessage)
 
+############################################
+# Add random letter
+
+def removeString(message):
+	a = myKeys[0] + myKeys[1]
+	b = len(myKeys[2])
+	i = 0
+	message = message[b:]
+	message = message[:-b]
+	while i < len(message):
+		if (i%a == 0):
+			message = message[:i+1] + message[i+b+1:]
+		i = i + 1
+	return message
+
 ##############################
 # Encryprion level control
 def decrypteMessage(message):
 	newMessage = ""
 	if verify:
-		newMessage = decryptVigenerWord(message)
+		newMessage = removeString(message)
+		newMessage = decryptVigenerWord(newMessage)
 		newMessage = decrypteAffineMessage(newMessage)
 		return newMessage
 	else:

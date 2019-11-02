@@ -25,12 +25,13 @@ def main():
 	if choice == '1':
 		try:
 			clear()
+			print(defaultAppHeader)
 			myMessage = openFile()
 							
 			currentMessage = encrypteMessage(myMessage)
 			saveFile(currentMessage, encryptFolder)
 
-			print('\nDone.\nYour encrypted message is now in ' + encryptFolder + ' directory.\n')
+			print('\nDone.\nYour encrypted message is now in [' + encryptFolder + '] directory.\n')
 		except Exception as e:
 			print("Sorry. Can't read your file. Please import another one." + str(e))
 
@@ -39,12 +40,13 @@ def main():
 	elif choice == '2':
 		try:
 			clear()
+			print(defaultAppHeader)
 			myMessage = openFile(encryptFolder)
 
 			currentMessage = decrypteMessage(myMessage)
 			saveFile(currentMessage, decryptFolder)
 
-			print('\nDone.\nYour decrypted message is now in ' + decryptFolder + ' directory.\n')
+			print('\nDone.\nYour decrypted message is now in [' + decryptFolder + '] directory.\n')
 		except Exception as e:
 			print("Sorry. Can't read your file. Please import another one." + str(e))
 

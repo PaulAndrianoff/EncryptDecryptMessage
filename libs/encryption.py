@@ -1,5 +1,7 @@
 from libs.verification import alphaLen, myKeys, verify, alphaContent
-from libs.mathFunction import setKeyWordMessage
+from libs.mathFunction import setKeyWordMessage, randString
+from libs.sysCommand import clear
+import time
 
 ############################################
 # Affine
@@ -13,8 +15,7 @@ def encrypteAffineLetter(letter):
 
 		newIndex = (a * currentIndex + b)%m
 		newLetter = alphaContent[newIndex]
-
-		# print(letter + " - " + str(currentIndex) + " : " + newLetter + " - " + str(newIndex))
+		
 		return newLetter
 	except Exception as e:
 		return letter
@@ -22,9 +23,16 @@ def encrypteAffineLetter(letter):
 
 def encrypteAffineMessage(message):
 	newMessage = ""
-	print('In encryption...')
+	i = 0
+	maxLen = len(message)
+	print("\n[", end='')
 	for letter in message:
+		time.sleep(0)
 		newMessage = newMessage + encrypteAffineLetter(letter)
+		if int(i/maxLen*100) % 10 == 0:
+			print("#", end='')
+		i += 1
+	print('] \n Done')
 	return newMessage
 
 ############################################
@@ -45,6 +53,22 @@ def encryptVigenerWord(message):
 		i = i + 1
 	return(newMessage)
 
+############################################
+# Add random letter
+
+def addString(message):
+	a = myKeys[0] + myKeys[1]
+	b = len(myKeys[2])
+	newMessage = randString(b, alphaContent)
+	i = 0
+	while i < len(message):
+		newMessage = newMessage + message[i]
+		if (i%a == 0):
+			newMessage = newMessage + randString(b, alphaContent)
+		i = i + 1
+	newMessage = newMessage + randString(b, alphaContent)
+	return newMessage
+
 ##############################
 # Encryprion level control
 
@@ -53,6 +77,7 @@ def encrypteMessage(message):
 	if verify:
 		newMessage = encrypteAffineMessage(message)
 		newMessage = encryptVigenerWord(newMessage)
+		newMessage = addString(newMessage)
 		return newMessage
 	else:
 		return "Sorry your message can't be encrypted"
