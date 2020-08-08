@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/brython@3.8.9/brython.min.js">
+    </script>
+</head>
+
+<body onload="brython()">
+
+    <div>
+        <select name="mode" id="mode">
+            <option value="encrypte">encrypte</option>
+            <option value="decrypte">decrypte</option>
+        </select>
+        <textarea name="text" id="text" cols="30" rows="10"></textarea>
+        <button id="start">Start</button>
+    </div>
+
+<script type="text/python">
+from browser import document
+from libs.encryption import encrypteMessage
+from libs.decryption import decrypteMessage
+
+mode = document['mode']
+message = document['text']
+start = document['start']
+
+def changeButtonName(ev):
+    start.text = 'start ' + mode.value
+
+def startScript(ev):
+    myNewMessage = ''
+    currentMessage = message.value
+    if mode.value == encrypte:
+        myNewMessage = encrypteMessage(currentMessage)
+    else:
+        myNewMessage = decrypteMessage(currentMessage)
+    message.value = myNewMessage
+
+mode.bind('change', changeButtonName)
+start.bind('click', startScript)
+start.text = 'start ' + mode.value
+
+</script>
+
+</body>
+
+</html>

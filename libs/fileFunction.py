@@ -18,13 +18,14 @@ def openFile(path="/Document"):
 		
 	return myMessage
 
-def saveFile(currentMessage, path):
-	filename = input("Please, name your encrypted file: ")
-	now = datetime.datetime.now()
+def saveFile(currentMessage, path, name):
+	# filename = input("Please, name your encrypted file: ")
+	filename = name
+	# now = datetime.datetime.now()
 	# print(now.strftime("%Y-%m-%d_%H-%M-%s"))
-	today = str(now).replace(" ", "_").replace(":", "-")
+	# today = str(now).replace(" ", "_").replace(":", "-")
 
-	encryptedFile = open(path + str(today) + "_" + filename + ".txt", 'w')
+	encryptedFile = open(path + filename + ".txt", 'w')
 	encryptedFile.write(currentMessage)
 	encryptedFile.close()
 

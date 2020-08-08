@@ -1,0 +1,17 @@
+# from browser import document
+
+# mode = document['mode']
+# message = document['text']
+# start = document['start']
+
+# def changeButtonName(ev):
+#     start.text = 'start ' + mode.value
+
+# def startScript(ev):
+#     print('start')
+
+# mode.bind('change', changeButtonName)
+# start.bind('click', startScript)
+# start.text = 'start ' + mode.value
+
+print('ok')

@@ -56,7 +56,7 @@ def decryptVigenerWord(message):
 	return(newMessage)
 
 ############################################
-# Add random letter
+# Remove random letter
 
 def removeString(message):
 	a = myKeys[0] + myKeys[1]

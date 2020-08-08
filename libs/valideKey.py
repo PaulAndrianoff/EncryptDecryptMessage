@@ -11,7 +11,7 @@ def setNewKey():
 		try:
 			aKey = int(input("\nIn (ax + b)mod m, a = "))
 			bkey = int(input("\nand b = "))
-			wordKey = randString(int(input("\nYour key lenght = ")), alphaContent)
+			wordKey = randString(int(input("\nWe will generate a key word with a length ? ")), alphaContent)
 
 			keysFile.write(str(aKey) + "\n" + str(bkey) + "\n" + wordKey)
 			keysFile.close()
